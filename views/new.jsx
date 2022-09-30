@@ -18,6 +18,8 @@ function New () {
                     type="text"
                     name="image"
                     id="image"
+                    pattern="(http|https)://.*"
+                    title='Must be a link to an image'
                 />
                 <label htmlFor="hasGluten">Has Gluten?</label>
                 <input
