@@ -5,16 +5,24 @@ const Bread = require('../models/bread.js');
 // INDEX
 breads.get('/', (req, res) => {
     res.render('Index',
-        {
-            breads: Bread,
-            title: 'Index Page'
-        }
+    {
+        breads: Bread,
+        title: 'Index Page'
+    }
     );
 });
 
 // NEW
 breads.get('/new', (req, res) => {
     res.render('New');
+});
+
+// EDIT
+breads.get('/:arrayIndex/edit', (req, res) => {
+    res.render('Edit', {
+        bread: Bread[req.params.arrayIndex],
+        index: req.params.arrayIndex
+    });
 });
 
 // SHOW
@@ -41,7 +49,18 @@ breads.post('/', (req, res) => {
     }
     Bread.push(req.body);
     res.redirect('/breads');
-})
+});
+
+// UPDATE
+breads.put('/:arrayIndex', (req, res) => {
+    if (req.body.hasGluten == 'on') {
+        req.body.hasGluten = true;
+    } else {
+        req.body.hasGluten = false;
+    }
+    Bread[req.params.arrayIndex] = req.body;
+    res.redirect(`/breads/${req.params.arrayIndex}`);
+});
 
 // DELETE
 breads.delete('/:indexArray', (req, res) => {

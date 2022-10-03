@@ -1,5 +1,5 @@
-const React = require('react')
-const Default = require('./layouts/Default')
+const React = require('react');
+const Default = require('./layouts/default');
 
 function New () {
     return (
@@ -35,7 +35,7 @@ function New () {
                 <a href="/breads"><button>Go back to the index</button></a>
             </div>
       </Default>
-    )
+    );
 }
 
-module.exports = New
+module.exports = New;
