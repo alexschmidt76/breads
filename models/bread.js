@@ -10,13 +10,14 @@ const breadSchema = new Schema({
   image: { type: String, default: 'http://placehold.it/500x500' },
   baker: {
     type: Schema.Types.ObjectId,
-    ref: 'Baker'
+    ref: 'Baker',
   }
 });
 
 // instance methods
 breadSchema.methods.getBakedBy = function() {
-	return `${this.name} was baked with love by ${this.baker}`;
+  console.log(this.baker)
+	return `${this.name} was baked with love by ${this.baker.name}, who has been with us since ${this.baker.startDate.getFullYear()}`;
 }
 
 // static methods
