@@ -24,6 +24,11 @@ bakerSchema.virtual('breads', {
 	foreignField: 'baker'
 });
 
+// hooks
+bakerSchema.post('findOneAndDelete', async function() {
+	await Bread.deleteMany({ baker: this._conditions._id });
+});
+
 // model and export
 const Baker = mongoose.model('Baker', bakerSchema);
 module.exports = Baker;
