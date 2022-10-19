@@ -16,7 +16,6 @@ const breadSchema = new Schema({
 
 // instance methods
 breadSchema.methods.getBakedBy = function() {
-  console.log(this.baker)
 	return `${this.name} was baked with love by ${this.baker.name}, who has been with us since ${this.baker.startDate.getFullYear()}`;
 }
 
